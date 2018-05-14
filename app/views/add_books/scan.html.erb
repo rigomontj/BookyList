@@ -1,0 +1,22 @@
+<head>
+<script>
+window.onload = function() {
+      document.getElementById('isbn input').focus();
+}
+
+document.getElementById('isbn input').focus();
+var input = document.getElementById("isbn input");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+        if (event.keyCode === 13) {
+                document.getElementById("add").click();
+        }}); 
+</script>
+</head>
+
+<body>
+<%= form_tag(add_books_addisbn_path, method: "post") do %>
+    <%= text_field :isbn, nil, :autofocus => true %>
+    <%= submit_tag("add") %>
+<% end %>
+</body>

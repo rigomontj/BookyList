@@ -1,0 +1,44 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="topbar">
+    <% if current_user.admin? %>
+        <i class="material-icons">verified_user</i>
+    <% else %>
+        <i class="material-icons">account_circle</i>
+    <% end %>
+    <%= current_user.email %>
+    <%= link_to(destroy_user_session_path, method: :delete) do %>
+        <i class="fas fa-sign-out-alt"></i>
+    <% end %>
+    </div>
+    </br>
+<div class="logobox">
+    <%= image_tag("bookylistlogohome.png", width: "20%", alt: "bookylist logo") %>
+</div>
+</br>
+<div class="centered">
+<div class="line-separator"></div>
+</div>
+</br>
+<div class="centered">
+<div class="big-menu-btn">
+    <i class="fas fa-plus-circle"></i>
+<%= link_to add_books_scan_path do %>
+Ajouter
+<% end %>
+</div>
+</div>
+</br>
+
+<div class="centered">
+    <div class="big-menu-btn">
+    <i class="fas fa-book"></i>
+Mes livres
+</div>
+</div>
+</body>

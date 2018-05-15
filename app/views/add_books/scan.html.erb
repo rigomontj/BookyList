@@ -16,7 +16,7 @@ input.addEventListener("keyup", function(event) {
 
 <body>
 <%= form_tag(add_books_addisbn_path, method: "post") do %>
-    <%= text_field :isbn, nil, :autofocus => true %>
+    <%= text_field :isbn, nil, class:"effect-16", :autofocus => true %>
     <%= submit_tag("add") %>
 <% end %>
 </body>

@@ -1,0 +1,24 @@
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+<body>
+<%= link_to root_path do %><i class="fas fa-home"></i><% end %>
+- Mes Livres
+</br> 
+</br> 
+
+<% @shelves.each do |s| %>
+<%= s.name %>
+</br>
+<% (s.books.all.sort_by {|book| [book.author.split(" ")[-1], book.title]}).each do |b| %>
+<%= image_tag("#{b.thumbnail}") %>
+    </br>
+<
+    <%= b.title %>
+-
+    <%= b.author %>
+<% end %>
+</br>
+<% end %>
+</body>

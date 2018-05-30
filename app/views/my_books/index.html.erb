@@ -1,0 +1,30 @@
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+<body>
+<%= link_to root_path do %><i class="fas fa-home"></i><% end %>
+- Mes Livres
+</br> 
+</br> 
+
+<% @shelves.each do |s| %>
+<%= '======' %>
+</br>
+<%= s.name %>
+</br>
+<%= '======' %>
+</br>
+-
+</br>
+<% s.books.all.each do |b| %>
+    <%= b.title %>
+-
+    <%= b.author %>
+    </br>
+    -
+    </br>
+<% end %>
+</br>
+<% end %>
+</body>

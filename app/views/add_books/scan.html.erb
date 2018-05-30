@@ -1,22 +1,39 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script>
-window.onload = function() {
-      document.getElementById('isbn input').focus();
-}
-
-document.getElementById('isbn input').focus();
-var input = document.getElementById("isbn input");
-input.addEventListener("keyup", function(event) {
-    event.preventDefault();
-        if (event.keyCode === 13) {
-                document.getElementById("add").click();
-        }}); 
-</script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Add Books - BookyList</title>
 </head>
-
+            
 <body>
-<%= form_tag(add_books_addisbn_path, method: "post") do %>
-    <%= text_field :isbn, nil, class:"effect-16", :autofocus => true %>
-    <%= submit_tag("add") %>
-<% end %>
+    <%= link_to root_path do %><i class="fas fa-home"></i><% end %>
+    - Ajouter des livres à ma bibliothèque
+    </br> 
+    </br> 
+    <% unless (current_user.books.last == nil) %>
+        Shelf: <%= current_user.books.last.shelf.name %>
+    <% end %>            
+    
+    <%= form_tag(add_books_additembyupc_path, method: "post") do %>
+    <%= text_field :shelfname, nil%>
+    <%= text_field :upc, nil, :autofocus => true %>
+    <%= submit_tag("SCAN") %>
+    <% end %>
+
+    <% s = (current_user.shelves.sort_by {|shelf| [shelf.updated_at]}[-1]) %>
+    <% unless s == nil %>
+    <%= s.name  %>
+    </br>
+    <% (s.books.all.sort_by {|book| [book.updated_at, book.title]}).each do |b| %>
+        <%= image_tag("#{b.thumbnail}") %>
+        </br>
+        ^ 
+        <%= b.title %>
+        -
+        <%= b.author %>
+        </br>
+    <% end %>
+    <% end %>
 </body>

@@ -12,6 +12,10 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'http'
+gem 'dotenv-rails'
+gem 'httparty'
+gem 'rollbar'
 
 group :development, :test do
   gem 'sqlite3'

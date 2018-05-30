@@ -1,0 +1,9 @@
+<%= form_tag(add_books_manual_add_path, method: "post", shelfname: params['shelfname']) do %>
+    SHELFNAME:
+    <%= text_field_tag 'shelfname', params['shelfname'] %>
+    TITLE:
+    <%= text_field_tag 'title' %>
+    AUTHOR:
+    <%= text_field_tag 'author'%>
+    <%= submit_tag("ADD") %>
+<% end %>
